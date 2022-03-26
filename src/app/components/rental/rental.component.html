@@ -1,0 +1,25 @@
+<div>
+    <div class="row">
+        <table class="table">
+    <thead>
+        <th>Araba</th>
+        <th>Marka</th>
+        <th>Müşteri</th>
+        <th>Kiralama Tarihi</th>
+        <th>Teslim Tarihi</th>
+    </thead>
+    <tr *ngFor="let rental of rentals">
+        <td>{{rental.carId}}</td>
+        <td>{{rental.brandName}}</td>
+        <td>{{rental.customer}}</td>
+        <td>{{rental.rentDate | date :'dd MMMM yyyy EEEE'}}</td>
+        <td>{{rental.returnDate | date :'dd MMMM yyyy EEEE'}}</td>
+    </tr>
+</table>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div *ngIf="dataExists==false" class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+    </div>
+</div>

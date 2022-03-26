@@ -1,0 +1,23 @@
+<div class="card" style="margin-bottom: 20px;">
+  <div class="card-body">
+    <h6 class="card-title">Filtrele</h6>
+<form [formGroup]="carFilterForm" (ngSubmit)="filterCars()">
+  
+  <select class="form-select" aria-label="Default select example" formControlName="brand">
+      <option [ngValue]="null">Tüm Markalar</option>
+       <option [ngValue]="brand.brandName" *ngFor="let brand of brands">{{brand.brandName}}</option> 
+    </select>
+  
+    
+    <select class="form-select" aria-label="Default select example" formControlName="color" style="margin-top: 10px;">
+      <option [ngValue]="null">Tüm Renkler</option>
+      <option [ngValue]="color.colorName" *ngFor="let color of colors">{{color.colorName}}</option>
+    </select>
+
+<div class="row-cols-1" style="margin-top: 10px;">
+    <button class="btn btn-success" type="submit">Filtrele</button>
+</div>
+</form>
+
+  </div>
+</div>

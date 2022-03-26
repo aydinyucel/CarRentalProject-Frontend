@@ -1,0 +1,21 @@
+<div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Email</th>
+            </thead>
+            <tr *ngFor="let user of users">
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.email}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div *ngIf="dataExists==false" class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+    </div>
+</div>

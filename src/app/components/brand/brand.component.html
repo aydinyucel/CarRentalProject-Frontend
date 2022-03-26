@@ -1,0 +1,23 @@
+<div>
+  <div class="mb-3">
+    <label for="brandFilterText" class="form-label">Marka Ara</label>
+    <input type="text" [(ngModel)]="brandFilterText" class="form-control" id="brandFilterText" placeholder="Marka giriniz..">
+  </div>
+  <div *ngIf="brandFilterText.length>2" class="alert alert-success">{{brandFilterText}}</div>
+    <div class="row">
+        <ul class="list-group">
+          <li (click)="setCurrentBrand(brand)"
+          routerLink="/cars/brand/{{brand.brandName}}"
+          *ngFor="let brand of brands | brandFilter:brandFilterText" 
+          [class]="getCurrentBrandClass(brand)">{{brand.id}} - {{brand.brandName}}</li>
+        </ul>
+      </div>
+    <div class="row d-flex justify-content-center">
+        <div *ngIf="dataExists==false" class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+    </div>
+</div>
+
+
+

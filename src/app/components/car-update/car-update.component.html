@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="card" *ngIf="selectedCar">
+        <div  class="card-header"> {{selectedCar.description}}</div>
+        <div class="card-body">
+            <div [formGroup]="carUpdateForm">
+                <div class="mb-3">
+                    <label for="brandId" class="form-label">Marka: {{selectedCar.brandName}}</label>
+                    <select class="form-select" formControlName="brandId">
+                        <option selected>Marka Seçin</option>
+                        <option [ngValue]="brand.id" *ngFor="let brand of brands">{{brand.brandName}}</option>
+                      </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="colorId" class="form-label">Renk: {{selectedCar.colorName}}</label>
+                    <select class="form-select" formControlName="colorId">
+                        <option selected>Renk Seçin</option>
+                        <option [ngValue]="color.id" *ngFor="let color of colors">{{color.colorName}}</option>
+                      </select>
+                    </div>
+                      <div class="mb-3">
+                        <label for="modelYear" class="form-label">Model Yılı: {{selectedCar.modelYear}}</label>
+                        <input type="number" class="form-control" id="modelYear" formControlName="modelYear">
+                    </div>
+                
+                
+                    <div class="mb-3">
+                        <label for="dailyPrice" class="form-label">Günlük Fiyat: {{selectedCar.dailyPrice}}</label>
+                        <input type="number" class="form-control" id="dailyPrice" formControlName="dailyPrice">
+                      </div>
+                
+               
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Model Adı: {{selectedCar.description}}</label>
+                        <input type="text" class="form-control" id="description" formControlName="description">
+                      </div>
+                  
+            </div>
+        </div>
+        <div class="card-footer" style="text-align: center;">
+            <button (click)="update()" type="button" class="btn btn-success btn-lg btn-block">Güncelle</button>
+        </div>
+    </div>
+</div>

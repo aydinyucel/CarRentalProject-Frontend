@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h5>Renk Güncelle</h5>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="colorUpdateForm">
+                <div class="mb-3">
+                    <label for="colorId" class="form-label">Güncellenecek Rengi Seçin</label>
+                    <select class="form-select" formControlName="colorId">
+                        <option selected>Renk Seçin</option>
+                        <option [ngValue]="color.id" *ngFor="let color of colors">{{color.colorName}}</option>
+                      </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="uptadedColor" class="form-label">Yeni Renk İsmi</label>
+                    <input type="text" class="form-control" id="uptadedColor" formControlName="updatedColor">
+                  </div>
+            </form>
+        </div>
+        <div class="card-footer">
+            <button (click)="update()" type="button" class="btn btn-success btn-lg btn-block">Güncelle</button>
+        </div>
+    </div>
+</div>

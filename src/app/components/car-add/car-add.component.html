@@ -1,0 +1,44 @@
+<div class="content">
+    <div class="card">
+        <div class="card-header">
+            <h5 style="text-align: center;">Araba Ekle</h5>
+        </div>
+        <div class="card-body">
+           <form [formGroup]="carAddForm">
+            <div class="mb-3">
+                <label for="brandId" class="form-label">Marka Seçin</label>
+                <select class="form-select" formControlName="brandId">
+                    <option selected>Marka Seçin..</option>
+                    <option [ngValue]="brand.id" *ngFor="let brand of brands">{{brand.brandName}}</option>
+                  </select>
+              </div>
+              <div class="mb-3">
+                <label for="colorId" class="form-label">Renk Seçin</label>
+                <select class="form-select" formControlName="colorId">
+                    <option selected>Renk Seçin</option>
+                    <option [ngValue]="color.id" *ngFor="let color of colors">{{color.colorName}}</option>
+                  </select>
+              </div>
+            <div class="mb-3">
+                <label for="modelYear" class="form-label">Model Yılı</label>
+                <input type="number" class="form-control" id="modelYear" formControlName="modelYear">
+            </div>
+        
+        
+            <div class="mb-3">
+                <label for="dailyPrice" class="form-label">Günlük Fiyat</label>
+                <input type="number" class="form-control" id="dailyPrice" formControlName="dailyPrice">
+              </div>
+        
+       
+            <div class="mb-3">
+                <label for="description" class="form-label">Model Adı</label>
+                <input type="text" class="form-control" id="description" formControlName="description">
+              </div>
+           </form>
+            </div>
+        <div class="card-footer text-center d-grid gap-2 ">
+            <button (click)="add()" type="button" class="btn btn-success btn-lg btn-block">Ekle</button>
+        </div>
+    </div>
+</div>

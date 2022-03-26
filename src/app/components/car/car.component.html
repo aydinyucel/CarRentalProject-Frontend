@@ -1,0 +1,63 @@
+<div class="container">
+  <!-- Car Search -->
+  <div class="row">
+    <div class="row">
+      <div class="mb-3">
+        <label for="carFilterText" class="form-label">Araba Ara</label>
+        <input
+          type="text"
+          [(ngModel)]="carFilterText"
+          class="form-control"
+          id="carFilterText"
+          placeholder="Marka veya model giriniz.."
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div *ngIf="carFilterText.length > 2" class="alert alert-success">
+        {{ carFilterText }}
+      </div>
+    </div>
+  </div>
+
+  <app-car-filter></app-car-filter>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="card" *ngFor="let car of cars | carFilter:carFilterText">
+      <img
+      *ngFor="let image of images | imageFilter:car.id"
+        src="https://localhost:44383/{{image.imagePath}}"
+        class="card-img-top"
+        alt="car.image"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ car.brandName }} {{ car.description }}</h5>
+        <p class="card-text">
+          Renk:{{ car.colorName }} <br />
+          Günlük Fiyat:{{ car.dailyPrice }} <br />
+          Model Yılı:{{ car.modelYear }}
+        </p>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-success" routerLink="/car/detail/{{ car.id }}">
+          Detay
+        </button>
+        <button
+          routerLink="/car/update/{{ car.id }}"
+          style="margin-left: 10px"
+          class="btn btn-primary"
+        >
+          Güncelle
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spinner -->
+  <div class="row d-flex justify-content-center">
+    <div *ngIf="dataExists == false" class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
